@@ -1,0 +1,77 @@
+@import"../../../colors";
+@import"../../../mixins";
+
+.container {
+  padding: 100px 15px !important;
+  max-width: 1260px;
+  margin: auto;
+}
+
+.table {
+  width: 100%;
+}
+
+.mat-mdc-row {
+  cursor: pointer;
+}
+
+.mat-column-select {
+  width: 32px;
+  padding-right: 24px !important;
+  text-align: center !important;
+}
+
+.example-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+.table-title-wrap {
+  background-color: $color-white;
+  border-radius: 5px 5px 0 0;
+  padding: 10px;
+  border-bottom: 1px solid $color-datatable;
+
+  .table-title {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.4;
+    color: $color-blue-dark;
+  }
+
+  .table-search-wrap {
+    .table-search {
+      font-size: 12px;
+      font-weight: 700;
+      color: $color-search;
+      line-height: 1;
+      border: 1px solid $color-input-border;
+      border-radius: 5px;
+      padding: 13px 44px 13px 20px;
+      background-image: url(../../../assets/images/search-icon.png);
+      background-color: $color-white;
+      background-repeat: no-repeat;
+      background-position: 90% 50%;
+      max-width: 230px;
+      width: 100%;
+      outline: none;
+
+      &:focus {
+        border-color: $color-blue-light;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+      }
+    }
+  }
+}

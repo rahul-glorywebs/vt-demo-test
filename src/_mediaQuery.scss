@@ -1,0 +1,197 @@
+/*---------------------------  
+	Min Media Queries
+---------------------------*/
+@media only screen and (max-width: 1199px) {
+	.left-side-wrap {
+		left: -270px;
+		transition: all 0.35s;
+		z-index: 9999;
+
+		&.side-menu-open {
+			left: 0;
+		}
+
+		.button-toggle-menu-close {
+			background-image: url(assets/images/close.png);
+			width: 17px;
+			height: 17px;
+			background-color: transparent;
+			box-shadow: none;
+			border: none;
+			position: absolute;
+			right: 20px;
+			top: 27px;
+			display: inline-block;
+		}
+	}
+
+	.top-menu-wrap {
+		left: 0;
+		width: 100%;
+
+		.top-nav-menu {
+			display: none;
+		}
+
+		.top-mobile-menu-wrap {
+			display: flex !important;
+			padding: 15px 0;
+
+			.logo-toggle-main {
+				.top-menu-toggle-wrap {
+					padding: 0 15px;
+
+					.button-toggle-menu {
+						background-color: $theme-left-side;
+						width: 40px;
+						height: 40px;
+						position: relative;
+						padding: 10px;
+						border-radius: 5px;
+						border: none;
+
+						span {
+							display: block;
+							position: absolute;
+							height: 2px;
+							width: 20px;
+							background-color: #fff;
+							border-radius: 10px;
+							opacity: 1;
+							left: calc(50% - 10px);
+							transition: .25s ease-in-out;
+
+							&:nth-child(1) {
+								top: 13px;
+							}
+
+							&:nth-child(2) {
+								top: 19px;
+							}
+
+							&:nth-child(3) {
+								top: 19px;
+							}
+
+							&:nth-child(4) {
+								top: 25px;
+							}
+						}
+					}
+				}
+
+				.top-menu-logo-wrap {
+					padding: 0 5px;
+				}
+			}
+
+			.top-mobile-nav-main {
+				.top-nav-menu {
+					display: block;
+					padding-right: 13px;
+
+					.top-nav-menu-item {
+						padding: 0 7px;
+
+						.top-nav-menu-item-link {
+							background-color: $color-item-link;
+							border-radius: 5px;
+							width: 40px;
+							height: 40px;
+							justify-content: center;
+
+							.top-nav-menu-item-img {
+								margin-right: 0;
+								text-align: center;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.right-side-wrap {
+		max-width: 100%;
+		margin-left: 0;
+	}
+}
+
+@media only screen and (max-width: 991px) {
+	.login-section {
+		.main-row {
+			flex-direction: column-reverse;
+
+			.login-background {
+				display: block;
+				height: 100%;
+				padding: 50px 50px 150px;
+
+				.login-logo-right {
+					.login-form-title {
+						font-size: 35px;
+
+						sup {
+							top: -14px;
+							font-size: 15px;
+						}
+					}
+				}
+			}
+
+			.login-wrap {
+				max-width: 480px;
+				margin: -100px auto 50px;
+				padding: 30px 50px 45px;
+				background-color: $color-white;
+				box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+				border-radius: 5px;
+				z-index: 1;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.right-side-wrap {
+		.breadcrumbs-wrap {
+			text-align: center;
+		}
+
+		.datatable-title-wrap {
+			.datatable-title {
+				text-align: center;
+				margin-bottom: 8px;
+			}
+
+			.datatable-search-wrap {
+				.datatable-search {
+					max-width: 320px;
+				}
+			}
+		}
+
+		.detail-table-wrap {
+			.dataTables_info {
+				padding-bottom: 0;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 575px) {
+	.login-section {
+		.main-row {
+			.login-wrap {
+				padding: 30px 20px 45px;
+			}
+		}
+	}
+
+	.right-side-wrap {
+		.datatable-title-wrap {
+			padding: 10px 0;
+		}
+	}
+
+}

@@ -1,0 +1,196 @@
+<form [formGroup]="consentForm">
+  <div class="consent-form-header">
+    <div class="row background-color rounded-3 mb-3 height-42">
+      <div class="col-8 p-2 text-white m-auto">{{headerTitle}}</div>
+      <div class="col-4 text-end p-2 m-auto" *ngIf="isNewFormVisible">
+        <mat-icon aria-hidden="false" aria-label="save" fontIcon="save" title="save consent"
+          (click)="saveConsent()"></mat-icon>
+      </div>
+      <div class="col-4 text-end p-2 m-auto" *ngIf="!isNewFormVisible && status">
+        <span class="p-1">
+          <mat-icon aria-hidden="false" aria-label="save" fontIcon="save" title="Update consent"
+            (click)="updateConsent()"></mat-icon>
+        </span>
+        <span class="p-1">
+          <mat-icon aria-hidden="false" aria-label="not_interested" fontIcon="not_interested" title="Inactive consent"
+            (click)="deleteConsent()"></mat-icon>
+        </span>
+      </div>
+      <div class="col-4 text-end p-2 m-auto" *ngIf="!status"></div>
+    </div>
+  </div>
+  <div class="consent-form-body">
+    <div class="row pb-4">
+      <div class="col">
+        <label for="start date" class="form-label">Start Date<span class="text-danger">*</span></label>
+        <div class="d-flex">
+          <input [matDatepicker]="sDate" class="form-control custom-input" id="startDate" placeholder="MM/DD/YYYY"
+            formControlName="startDate" [min]="minDate" #startDate (dateChange)="onDateChange('startDate',$event)"
+            [disableFormControl]="!status" />
+          <mat-datepicker-toggle matIconSuffix [for]="sDate"></mat-datepicker-toggle>
+          <mat-datepicker #sDate></mat-datepicker>
+        </div>
+        <div class="error-message"
+          *ngIf="consentForm.controls['startDate'].hasError('required') && (consentForm.controls['startDate'].dirty || consentForm.controls['startDate'].touched)">
+          Please enter a start date.
+        </div>
+      </div>
+      <div class="col">
+        <label for="end date" class="form-label">End Date<span class="text-danger">*</span></label>
+        <div class="d-flex">
+          <input [matDatepicker]="eDate" class="form-control custom-input" id="endDate" placeholder="MM/DD/YYYY"
+            formControlName="endDate" [min]="minDate" #endDate (dateChange)="onDateChange('endDate',$event)"
+            [disableFormControl]="!status" />
+          <mat-datepicker-toggle matIconSuffix [for]="eDate"></mat-datepicker-toggle>
+          <mat-datepicker #eDate></mat-datepicker>
+        </div>
+        <div class="error-message"
+          *ngIf="consentForm.controls['endDate'].hasError('required') && (consentForm.controls['endDate'].dirty || consentForm.controls['endDate'].touched)">
+          Please enter a end date.
+        </div>
+      </div>
+    </div>
+
+    <div class="row pb-4">
+      <div class="col">
+        <label for="provision type" class="form-label">Provision Type<span class="text-danger">*</span></label>
+        <select id="inputState" class="form-select" formControlName="provisionType" [disableFormControl]="!status">
+          <option value="deny">Deny</option>
+        </select>
+        <div class="error-message"
+          *ngIf="consentForm.controls['provisionType'].hasError('required') && (consentForm.controls['provisionType'].dirty || consentForm.controls['provisionType'].touched)">
+          Please select provision Type.
+        </div>
+      </div>
+      <div class="col">
+        <label for="actor" class="form-label">Actor<span class="text-danger">*</span></label>
+        <select id="inputState" class="form-select" formControlName="actor" [disableFormControl]="!status">
+          <option *ngFor="let actor of practitionerList" value="{{actor.resource.id}}">
+            {{ actor.actorName }}
+          </option>
+        </select>
+        <div class="error-message"
+          *ngIf="consentForm.controls['actor'].hasError('required') && (consentForm.controls['actor'].dirty || consentForm.controls['actor'].touched)">
+          Please select actor.
+        </div>
+      </div>
+    </div>
+
+    <div class="row background-color rounded-3">
+      <div class="col-10 p-2 text-white m-auto">Encounter</div>
+      <div class="col-2 text-end p-2 m-auto">
+        <mat-icon aria-hidden="false" aria-label="add_circle_outline" fontIcon="add_circle_outline"
+          title="Add Encounter" (click)="addEncounter()" *ngIf="status"></mat-icon>
+      </div>
+    </div>
+    <div class="row pb-4">
+      <div class="col" formArrayName="encounters">
+        <div class="row pt-3" *ngFor="let encounterValue of encounters.controls; let i = index">
+          <div class="col-3 m-auto">Encounter<span class="text-danger">*</span></div>
+          <div class="col-8" [formGroupName]="i">
+            <select id="inputState" formControlName="encounter" class="form-select" [disableFormControl]="!status">
+              <option *ngFor="let encounter of encounterDataList" value="{{'Encounter'+'/'+encounter.resource.id}}">
+                {{encounter.start| date: "MM-dd-yyyy"}}
+                | {{encounter.subject}} | {{encounter.service}} |
+                {{encounter.encounter}}
+              </option>
+            </select>
+          </div>
+          <div class="col-1 m-auto text-end">
+            <mat-icon aria-hidden="false" aria-label="delete" fontIcon="delete" (click)="removeEncounter(i)"
+              *ngIf="status"></mat-icon>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="error-message" *ngIf="status && encounters.controls.length === 0">Encounter is required</div> -->
+    </div>
+
+    <div class="row background-color rounded-3">
+      <div class="col-10 p-2 text-white m-auto">Laboratory Results</div>
+      <div class="col-2 text-end p-2 m-auto">
+        <mat-icon aria-hidden="false" aria-label="add_circle_outline" fontIcon="add_circle_outline" title="Add Loinc"
+          (click)="addLaboratory()" *ngIf="status"></mat-icon>
+      </div>
+    </div>
+    <div class="row pb-4">
+      <div class="col" formArrayName="laboratoryResults">
+        <div class="row pt-3" *ngFor="let laboratory of laboratoryResults.controls; let i = index">
+          <div class="col-3 m-auto">Loinc Code<span class="text-danger">*</span></div>
+          <div class="col-8" [formGroupName]="i">
+            <select id="inputState" formControlName="loincCode" class="form-select" [disableFormControl]="!status">
+              <option *ngFor="let loincCode of laboratoryResult" value="{{loincCode.code}}">{{loincCode.display}} -
+                ({{loincCode.code}})</option>
+            </select>
+          </div>
+          <div class="col-1 m-auto text-end">
+            <mat-icon aria-hidden="false" aria-label="delete" fontIcon="delete" (click)="removeLaboratory(i)"
+              *ngIf="status"></mat-icon>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="error-message" *ngIf="status && laboratoryResults.controls.length === 0">Laboratory results is
+        required
+      </div> -->
+    </div>
+
+    <div class="row background-color rounded-3">
+      <div class="col-10 p-2 text-white m-auto">
+        National/International Clinical Coding
+      </div>
+      <div class="col-2 text-end p-2 m-auto">
+        <mat-icon aria-hidden="false" aria-label="add_circle_outline" fontIcon="add_circle_outline" title="Add SnomedCT"
+          (click)="addSnomedCTCode()" *ngIf="status"></mat-icon>
+      </div>
+    </div>
+    <div class="row pb-4">
+      <div class="col" formArrayName="snomedCTCode">
+        <div class="row pt-3" *ngFor="let ctCode of snomedCTCode.controls; let i = index">
+          <div class="col-3 m-auto">
+            SnomedCT Code<span class="text-danger">*</span>
+          </div>
+          <div class="col-8" [formGroupName]="i">
+            <select id="inputState" formControlName="clinicalCode" class="form-select" [disableFormControl]="!status">
+              <option *ngFor="let snomedCTCode of snomedCT" value="{{snomedCTCode.code}}">{{snomedCTCode.display}} -
+                ({{snomedCTCode.code}})</option>
+            </select>
+          </div>
+          <div class="col-1 m-auto text-end">
+            <mat-icon aria-hidden="false" aria-label="delete" fontIcon="delete" (click)="removeSnomedCTCode(i)"
+              *ngIf="status"></mat-icon>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="error-message" *ngIf="status && snomedCTCode.controls.length === 0">
+        National/international clinical coding is required.
+      </div> -->
+    </div>
+
+    <div class="row background-color rounded-3">
+      <div class="col-10 p-2 text-white m-auto">Medications</div>
+      <div class="col-2 text-end p-2 m-auto">
+        <mat-icon aria-hidden="false" aria-label="add_circle_outline" fontIcon="add_circle_outline" title="Add Rxnorm"
+          (click)="addMedication()" *ngIf="status"></mat-icon>
+      </div>
+    </div>
+    <div class="row pb-4">
+      <div class="col" formArrayName="rxnormCode">
+        <div class="row pt-3" *ngFor="let rxCode of rxnormCode.controls; let i = index">
+          <div class="col-3 m-auto">
+            Medications<span class="text-danger">*</span>
+          </div>
+          <div class="col-8" [formGroupName]="i">
+            <select id="inputState" formControlName="rxCode" class="form-select" [disableFormControl]="!status">
+              <option *ngFor="let medication of combinedMedication" value="{{medication.code}}">{{medication.display}} -
+                ({{medication.code}})</option>
+            </select>
+          </div>
+          <div class="col-1 m-auto text-end">
+            <mat-icon aria-hidden="false" aria-label="delete" fontIcon="delete" (click)="removeMedication(i)"
+              *ngIf="status"></mat-icon>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="error-message" *ngIf="status && rxnormCode.controls.length === 0">Rxnorm coding is required.</div> -->
+    </div>
+  </div>
+</form>

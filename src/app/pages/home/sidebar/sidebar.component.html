@@ -1,0 +1,67 @@
+<div class="left-side-wrap side-menu-open">
+  <div class="leftside-menu">
+    <a routerLink="/dashboard" class="logo-wrap logo-light"><span class="logo-lg"><img src="assets/images/logo-main.png"
+          alt="logo"></span></a>
+    <button class="button-toggle-menu-close d-block d-xl-none"></button>
+    <div class="h-100 show sidebar-main-menu-wrap " id="leftside-menu-container" data-simplebar="init">
+      <div class="simplebar-wrapper">
+        <div class="search-inner-menu">
+          <input class="search-input-field" id="sidebarMenuSearch" type="text" name="search" placeholder="Search"
+            #menuSearchInput>
+        </div>
+        <ul class="side-nav">
+          <li class="side-nav-item menu-level-1" *ngFor="let menu of filteredMenus; let i=index;">
+            <a data-bs-toggle="collapse" [href]="'#menu'+i" [id]="'main-menu-'+i"
+              [ngClass]="removeCollapsedClass ?  'side-nav-link': 'side-nav-link collapsed'"
+              *ngIf="menu.menuType === 'Reports' || menu.menuType === 'Workflows'" [title]="menu.menuDescription">
+              <span class="side-nav-link-title">{{menu.menuName}}</span>
+              <span class="menu-arrow">
+                <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.939941 1.23999L4.46994 4.75999L7.99994 1.23999" stroke="#637083" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </a>
+            <a *ngIf="menu.menuType === 'Apps' || menu.menuType === 'Responses' || menu.menuType === 'Consents'"
+              class="side-nav-link collapsed margin-left-19" [id]="'smart-app-menu-'+i" [title]="menu.menuDescription"
+              (click)="renderSmartAppSubMenu(menu,i)">
+              <span class="side-nav-link-title">{{menu.menuName}}</span>
+            </a>
+            <div [ngClass]="removeCollapsedClass ? 'collapse show':'collapse'" [id]="'menu'+i">
+              <ul class="side-nav-second-level" *ngIf="menu.menuType === 'Reports'">
+                <li class="menu-level-3" *ngFor="let reportSubmenu of menu?.reports;"
+                  [title]="reportSubmenu.reportDescription ? reportSubmenu.reportDescription: '' ">
+                  <a (click)="onClickReportSubmenu($event,reportSubmenu)">{{reportSubmenu.reportName}}</a>
+                </li>
+              </ul>
+              <ul class="side-nav-second-level" *ngIf="menu.menuType === 'Workflows'">
+                <li class="menu-level-2" *ngFor="let workFlowSubmenu of menu?.workFlowSubMenus; let j=index;"
+                  [title]="workFlowSubmenu.w_desc ? workFlowSubmenu.w_desc : ''">
+                  <a data-bs-toggle="collapse" [ngClass]="removeCollapsedClass ? '':'collapsed'"
+                    [href]="'#menu-'+i+'-submenu-'+j" #aTagRef (click)="toggleActiveInactive(aTagRef,null)">
+                    {{workFlowSubmenu.w_name}}
+                    <span class="menu-arrow">
+                      <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.939941 1.23999L4.46994 4.75999L7.99994 1.23999" stroke="#637083" stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </a>
+                  <div [ngClass]="removeCollapsedClass ? 'collapse show':'collapse'" [id]="'menu-'+i+'-submenu-'+j">
+                    <ul class="side-nav-third-level">
+                      <li class="menu-level-3" [id]="'li-'+j+'-submenu-'+k"
+                        *ngFor="let submenu of workFlowSubmenu?.frames; let k=index;"
+                        [title]="submenu.f_description? submenu.f_description : ''">
+                        <a (click)="showForm($event,submenu,5,aTagRef)">{{submenu.f_name}}</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

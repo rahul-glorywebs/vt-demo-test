@@ -1,0 +1,55 @@
+<div class="container-split">
+  <div class="container-split">
+    <as-split unit="percent" direction="vertical">
+      <as-split-area [size]="topContainerSize" [minSize]="10" [maxSize]="50">
+        <div class="split_top">
+          <div class="inner-content">
+            <div class="menu-header" [ngClass]="{'height-42' : menu?.menuType === 'Consents'}">
+              <div class="content-title">{{menu?.menuName}}</div>
+              <div class="search-inner-menu d-flex align-items-center">
+                <div *ngIf="menu?.menuType === 'Consents'" class="d-flex align-items-center">
+                  <mat-icon aria-hidden="false" aria-label="add_circle_outline" fontIcon="add_circle_outline"
+                    title="Add new consent" (click)="addNewConsent()"></mat-icon>
+                  <mat-slide-toggle [checked]="consentCheckboxCheck" color="primary" *ngIf="toggleActiveAndSearchInput"
+                    (change)="onChangeCheckBox($event)">{{consentCheckboxCheck ? "Active" :
+                    "Inactive"}}</mat-slide-toggle>
+                </div>
+                <input class="search-input-field" type="text" name="search" placeholder="Search"
+                  *ngIf="toggleActiveAndSearchInput" #searchInput>
+              </div>
+            </div>
+            <div class="inner-content-wrp">
+              <ul>
+                <li *ngFor="let menu of filteredSmartAppSubmenu; let i=index;">
+                  <button (click)="onclickMenu($event,menu, i)" [title]="getTitleText(menu)" class="btn-menu"
+                    [id]="'btn-'+i">
+                    {{menu.name}}
+                    <span *ngIf="menu.type === 'Responses' && menu.data.updatedAt"> - ({{menu.data.updatedAt}})</span>
+                    <span *ngIf="menu.type === 'Consents'"> | {{menu.data.provisionType}} | {{menu.data.status}} -
+                      (Start Date:{{menu.data.start}} | End Date:{{menu.data.end}})</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </as-split-area>
+      <as-split-area [size]="bottomContainerSize" [minSize]="10" [maxSize]="100">
+        <div class="split_bottom">
+          <div class="inner-content">
+            <app-clinical-smart-apps *ngIf="isClinicalSmartAppsVisible"
+              [questionnaireFormData]="questionnaireForm"></app-clinical-smart-apps>
+
+            <app-response-smart-app *ngIf="isResponseSmartAppsVisible"
+              [questionnaireFormData]="questionnaireForm"></app-response-smart-app>
+
+            <app-consent-form *ngIf="isConsentFormDataVisible" [consentFormData]="consentFormData"
+              [isNewFormVisible]="false"></app-consent-form>
+
+            <app-consent-form *ngIf="isNewConsentFormVisible" [isNewFormVisible]="true"></app-consent-form>
+          </div>
+        </div>
+      </as-split-area>
+    </as-split>
+  </div>
+</div>

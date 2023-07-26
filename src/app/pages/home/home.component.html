@@ -1,0 +1,15 @@
+<ng-container>
+  <!-- Top Menu Header Start -->
+  <app-header [selectedPatient]="patient"></app-header>
+  <!-- Top Menu Header End -->
+  
+  <!-- Left Sidebar Start -->
+  <app-sidebar [selectedPatient]="patient"></app-sidebar>
+  <!-- Left Sidebar End -->
+  
+  <!-- Main Page Content Start -->
+  <div class="right-side-wrap open-sidebar-menu">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- Main Page Content End -->
+</ng-container>

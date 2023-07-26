@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row" style="margin-bottom: 0;height: calc(100vh - 95px);" *ngIf="src">
+    <div class="iframe-container">
+      <iframe [src]="src" height="100%" width="100%"></iframe>
+    </div>
+  </div>
+</div>
+<div id="dash-app" *ngIf="isPlotlyReportVisible"></div>
+<div id="workFlowQuestionnaireFormDiv" class="row" style="margin: 0; overflow: hidden;" *ngIf="isTabFormVisible">
+  <app-tab-form style="height: 100%; padding: 10px !important;"
+    [questionnaireFormData]="questionnaireForm"></app-tab-form>
+</div>
+<div class="row" *ngIf="isResizeFrameVisible">
+  <app-resize-frame [menu]="menuObject"></app-resize-frame>
+</div>

@@ -1,0 +1,106 @@
+<!-- Login Section Start -->
+<section class="login-section">
+  <div class="container-fluid">
+    <div class="row main-row align-items-stretch">
+      <div class="col-12 col-lg-6 col-xl-4 d-flex align-items-center">
+        <div class="login-wrap">
+          <div class="login-logo-wrp text-center">
+            <svg width="58" height="57" viewBox="0 0 58 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M28.5391 0C12.7989 0 0.0390625 12.7599 0.0390625 28.5C15.7792 28.5 28.5391 15.7401 28.5391 0Z"
+                fill="#0066FF" />
+              <path d="M28.5391 57C44.2792 57 57.0391 44.2401 57.0391 28.5C41.2989 28.5 28.5391 41.2599 28.5391 57Z"
+                fill="#0066FF" />
+              <path d="M28.5391 0C44.2792 0 57.0391 12.7599 57.0391 28.5C41.2989 28.5 28.5391 15.7401 28.5391 0Z"
+                fill="#7FB2FF" />
+              <path d="M28.5391 57C12.7989 57 0.0390611 44.2401 0.0390625 28.5C15.7792 28.5 28.5391 41.2599 28.5391 57Z"
+                fill="#7FB2FF" />
+            </svg>
+            <div class="login-form-title">Welcome to VirtualTRUST<sup>TM</sup></div>
+          </div>
+          <div class="form-wrp">
+            <div class="login-form-name-inner text-center">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M8.3435 0.5H19.6565C24.5705 0.5 27.5 3.4295 27.5 8.3435V19.6565C27.5 23.45 25.7585 26.0555 22.694 27.041C21.803 27.3515 20.777 27.5 19.6565 27.5H8.3435C7.223 27.5 6.197 27.3515 5.306 27.041C2.2415 26.0555 0.5 23.45 0.5 19.6565V8.3435C0.5 3.4295 3.4295 0.5 8.3435 0.5ZM17.1505 13.2583C16.3149 14.0667 15.1817 14.5208 14 14.5208C12.8183 14.5208 11.6851 14.0667 10.8495 13.2583C10.014 12.45 9.54455 11.3536 9.54455 10.2104C9.54455 9.06723 10.014 7.97085 10.8495 7.16249C11.6851 6.35413 12.8183 5.9 14 5.9C15.1817 5.9 16.3149 6.35413 17.1505 7.16249C17.986 7.97085 18.4554 9.06723 18.4554 10.2104C18.4554 11.3536 17.986 12.45 17.1505 13.2583ZM5.9 23.1417C5.9 19.5727 9.53564 16.6761 14 16.6761C18.4644 16.6761 22.1 19.5727 22.1 23.1417C22.1 23.3831 21.904 23.5727 21.6545 23.5727H6.34554C6.09604 23.5727 5.9 23.3831 5.9 23.1417Z"
+                  fill="#0066FF" />
+              </svg> Login
+            </div>
+            <div class="login-form-subname-inner text-center">Please login using your email address and password.</div>
+            <form id="loginform" [formGroup]="loginForm" (ngSubmit)="logIn()">
+              <div class="row">
+                <div class="form-group col-12">
+                  <div class="field-wrap">
+                    <div class="form-label">
+                      <label for="uname">Email Address*</label>
+                    </div>
+                    <div class="form-element">
+                      <input type="email" name="uname" placeholder="Enter your email address" formControlName="username"
+                        required>
+                    </div>
+                    <div class="error-message"
+                      *ngIf="loginForm.controls['username'].hasError('required') && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)">
+                      Please enter an username.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-12">
+                  <div class="field-wrap">
+                    <div class="form-label">
+                      <label for="uname">Password*</label>
+                    </div>
+                    <div class="form-element">
+                      <input type="password" name="password" placeholder="Enter your password"
+                        formControlName="password" required>
+                    </div>
+                    <div class="error-message"
+                      *ngIf="loginForm.controls['password'].hasError('required') && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+                      Please enter a password.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="form-group col-6">
+                  <div class="checkbox-wrap">
+                    <label for="rememberme" class="checked-item mb-0">Remember me
+                      <input id="rememberme" type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group col-6 text-end">
+                  <div class="forgotten-password">
+                    <a href="#">Forgot Password?</a>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group button-wrap col-md-12">
+                  <div class="field-wrap text-center">
+                    <button type="submit" class="btn btn-primary" *ngIf="!isLoading">Login</button>
+                    <div class="spinner-container">
+                      <mat-spinner *ngIf="isLoading" diameter="30"></mat-spinner>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="create-account text-center">New to our platform? <a href="#">Create an account</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 col-xl-8 p-0">
+        <div class="login-background">
+          <div class="login-logo-right text-center">
+            <div class="logo-img-wrap"><img src="assets/images/logo.png" alt="logo" width="92" height="91"></div>
+            <div class="login-form-title">VirtualTRUST<sup>TM</sup></div>
+            <div class="login-form-sub-title">Login to get started with VirtualTRUST<sup>TM</sup></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Login Section End-->

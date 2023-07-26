@@ -1,0 +1,28 @@
+@import"../../../../colors";
+
+.row {
+  .col {
+    button {
+      color: $color-white;
+      background-color: $theme-left-side;
+      margin: 10px 10px 10px 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &.active {
+        background-color: var(--theme-active-nav-link);
+      }
+    }
+  }
+}
+
+#questionnaireForm {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+
+#footer-row {
+  display: none;
+}

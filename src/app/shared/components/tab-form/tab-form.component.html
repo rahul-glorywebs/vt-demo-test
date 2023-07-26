@@ -1,0 +1,10 @@
+<div id="questionnaireForm" [ngStyle]="{'height':questionnaireForm.length > 1 ? 'calc(100% - 40px)' : '100%' }"></div>
+
+<div class="row" id="footer-row">
+  <div class="col text-center">
+    <button class="border-0 p-sm-2 rounded-3 w-25" *ngFor="let form of questionnaireForm" [title]="form.title"
+      (click)="renderSingleForm($event,form)">
+      {{form.title}}
+    </button>
+  </div>
+</div>

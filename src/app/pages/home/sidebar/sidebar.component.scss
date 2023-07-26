@@ -1,0 +1,33 @@
+/*---------------------------  
+	Mat spinner color change message css
+---------------------------*/
+:host ::ng-deep .custom-spinner circle {
+  stroke: #ffffff;
+}
+
+.side-nav-second-level {
+  li {
+    a {
+      .span-d-blok-f-size-p-top {
+        display: block;
+        font-size: 10px;
+        padding-top: 7px !important;
+      }
+    }
+  }
+
+}
+
+.side-nav-third-level {
+  padding-left: 20px;
+  padding-right: 3px;
+
+}
+
+.new-consent-btn {
+  padding: 8px;
+}
+
+.margin-left-19 {
+  margin-left: 19px;
+}

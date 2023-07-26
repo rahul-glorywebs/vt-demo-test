@@ -1,0 +1,131 @@
+@mixin section-title {
+	font-size: 28px;
+	font-weight: 800;
+	line-height: 1.2;
+	color: $color-white;
+}
+
+@mixin sup {
+	top: -10px;
+	left: 7px;
+	font-size: 15px;
+}
+
+@mixin section-sub-title {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: $color-gray;
+}
+
+@mixin success-pin {
+	background-color: $background-success;
+	color: $color-success;
+	display: inline-block;
+	padding: 2px 3px;
+	border-radius: 5px;
+}
+
+@mixin danger-pin {
+	background-color: $background-danger;
+	color: $color-danger;
+	display: inline-block;
+	padding: 2px 3px;
+	border-radius: 5px;
+}
+
+@mixin date-pin {
+	background-color: $background-date;
+	color: $color-date;
+	display: inline-block;
+	padding: 2px 3px;
+	border-radius: 5px;
+}
+
+@mixin form-group {
+	margin-bottom: 16px;
+
+	.field-wrap {
+		.form-label {
+			margin-bottom: 2px;
+
+			label {
+				font-size: 16px;
+				font-weight: 400;
+				line-height: 1.5;
+				color: $color-blue-dark;
+			}
+		}
+
+		input {
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 1;
+			color: $color-gray;
+			border: 1px solid $color-input-border;
+			border-radius: 5px;
+			background-color: $color-white;
+			padding: 13px 16px;
+			width: 100%;
+			outline: none;
+
+			&:focus {
+				border-color: $theme-nav-link;
+				box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+			}
+		}
+	}
+}
+
+@mixin checkbox-wrap {
+	.checked-item {
+		position: relative;
+		cursor: pointer;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 18px;
+		color: $color-gray;
+		padding-left: 28px;
+
+		input {
+			position: absolute;
+			opacity: 0;
+			cursor: pointer;
+			height: 0;
+			width: 0;
+
+			&:checked~.checkmark {
+				&:after {
+					display: inline-block;
+				}
+			}
+		}
+
+		.checkmark {
+			position: absolute;
+			width: 18px;
+			height: 18px;
+			border: 1px solid #CBD5E1;
+			border-radius: 5px;
+			display: inline-block;
+			background-color: #fff;
+			top: 50%;
+			left: 0;
+			transform: translateY(-50%);
+
+			&::after {
+				content: "";
+				position: absolute;
+				left: 6px;
+				top: 3px;
+				width: 5px;
+				height: 9px;
+				border: solid #0097D0;
+				border-width: 0 2px 2px 0;
+				-webkit-transform: rotate(45deg);
+				transform: rotate(45deg);
+				display: none;
+			}
+		}
+	}
+}

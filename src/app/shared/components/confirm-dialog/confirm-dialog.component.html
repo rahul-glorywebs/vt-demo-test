@@ -1,0 +1,7 @@
+<mat-dialog-content>
+  <p>{{data.bodyText}}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button matDialogClose="cancel" class="button" (click)="cancel()">{{data.cancelButtonText}}</button>
+  <button mat-button matDialogClose="confirm" class="button" (click)="confirm()">{{data.confirmButtonText}}</button>
+</mat-dialog-actions>

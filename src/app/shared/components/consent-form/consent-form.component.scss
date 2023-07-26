@@ -1,0 +1,61 @@
+@import "../../../../colors";
+
+.background-color {
+  background-color: $theme-left-side;
+}
+
+mat-icon {
+  color: $theme-left-side;
+  cursor: pointer;
+}
+
+mat-icon[fontIcon="add_circle_outline"] {
+  color: $color-white;
+  cursor: pointer;
+}
+
+mat-icon[fontIcon="save"] {
+  color: $color-white;
+  cursor: pointer;
+}
+
+mat-icon[fontIcon="not_interested"] {
+  color: $color-white;
+  cursor: pointer;
+}
+
+.col {
+  .custom-input {
+    height: 40px;
+    top: 7px;
+    position: relative;
+  }
+}
+
+form {
+  padding-top: 0px !important;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.consent-form-header {
+  position: sticky;
+  width: 100%;
+  z-index: 1;
+  margin: 0;
+}
+
+.consent-form-body {
+  height: calc(100% - 57px);
+  overflow-y: scroll;
+}
+
+.consent-form-header .row,
+.consent-form-body .row {
+  margin: 0;
+}
+
+.height-42 {
+  height: 42px;
+}

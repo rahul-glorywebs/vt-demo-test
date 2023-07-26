@@ -1,0 +1,136 @@
+<div class="top-menu-wrap open-sidebar-menu">
+  <div class="desktop-header d-none d-xl-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="logo-toggle-main d-flex align-items-center">
+        <div class="top-menu-toggle-wrap">
+          <button class="button-toggle-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="top-menu-logo-wrap">
+          <img src="assets/images/logo-mobile.png" alt="logo">
+        </div>
+      </div>
+      <ul class="top-nav-menu">
+        <li class="top-nav-menu-item">
+          <a class="top-nav-menu-item-link" (click)="chooseNewPatient()"
+            [ngClass]="{'cursor-default': !isMultiTenantUser && !isLoginUserPractitioner}">
+            <div class="top-nav-menu-item-title-wrap">
+              <div class="top-nav-menu-item-title d-flex align-items-center"
+                [title]="isMultiTenantUser || isLoginUserPractitioner ? 'Choose a patient':''">
+                <div class="top-nav-menu-item-img mr-5" *ngIf="isMultiTenantUser || isLoginUserPractitioner">
+                  <img src="assets/images/user.png" alt="user" width="24" height="24">
+                </div>
+                {{patientName}}
+              </div>
+              <span class="top-nav-menu-item-subtitle">Gender : </span>
+              <span class="top-nav-menu-item-title">{{gender | titlecase}}</span> &nbsp;
+              <span class="top-nav-menu-item-subtitle">DoB : </span>
+              <span class="top-nav-menu-item-title">{{dob | date: 'dd-MMM-yyyy'}}</span> &nbsp;
+              <span class="top-nav-menu-item-subtitle">Age : </span>
+              <span class="top-nav-menu-item-title">{{age}}</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>    
+    <ul class="top-nav-menu d-flex justify-content-between align-items-center">
+      <li class="top-nav-menu-item header-item">
+        <a class="top-nav-menu-item-link cursor-default">
+          <div class="top-nav-menu-item-title-wrap header-item-title">
+            <span class="top-nav-menu-item-subtitle">Login user : </span>
+            <span class="top-nav-menu-item-title">{{loginUserName}}</span>
+          </div>
+        </a>
+        <a class="top-nav-menu-item-link" [ngClass]="{'cursor-default' : !isMultiTenantUser}"
+          (click)="chooseNewFacility()">
+          <div class="top-nav-menu-item-title-wrap header-item-title"
+            [title]="isMultiTenantUser ? 'Choose a Facility':''">
+            <span class="top-nav-menu-item-subtitle">Facility name : </span>
+            <span class="top-nav-menu-item-title">{{facilityName}}</span>
+          </div>
+        </a>
+      </li>
+      <li class="top-nav-menu-item" title="Logout">
+        <a class="top-nav-menu-item-link">
+          <div class="top-nav-menu-item-img">
+            <mat-icon aria-hidden="false" aria-label="logout" fontIcon="logout" (click)="logout()"></mat-icon>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="mobile-header d-flex d-xl-none justify-content-between align-items-center">
+    <div class="logo-toggle-main d-flex align-items-center">
+      <div class="top-menu-toggle-wrap">
+        <button class="button-toggle-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div class="top-menu-logo-wrap">
+        <img src="assets/images/logo-mobile.png" alt="logo">
+      </div>
+    </div>
+    <div class="mobile-user-details d-flex align-items-center">
+      <a class="top-nav-menu-item-link" (click)="chooseNewPatient()">
+        <div class="top-nav-menu-item-title-wrap">
+          <div class="top-nav-menu-item-title" title="Choose a patient">{{patientName}}</div>
+          <span class="top-nav-menu-item-subtitle">Age : </span>
+          <span class="top-nav-menu-item-title">{{age}}</span>
+        </div>
+      </a>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="assets/images/plus-icon.png" alt="plus-icon" width="24" height="24">
+        </button>
+        <ul class="dropdown-menu">
+          <li (click)="chooseNewFacility()">
+            <a class="top-nav-menu-item-link">
+              <div class="top-nav-menu-item-title-wrap">
+                <div class="top-nav-menu-item-title">{{facilityName}}</div>
+                <div class="top-nav-menu-item-subtitle">Facility name</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="assets/images/user.png" alt="user" width="24" height="24">
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="top-nav-menu-item-link">
+              <div class="top-nav-menu-item-title-wrap">
+                <div class="top-nav-menu-item-title">{{loginUserName}}</div>
+                <div class="top-nav-menu-item-subtitle">Login user</div>
+              </div>
+            </a>
+          </li>
+          <li (click)="chooseNewPatient()">
+            <a class="top-nav-menu-item-link">
+              <div class="top-nav-menu-item-title-wrap">
+                <div class="top-nav-menu-item-title">{{patientName}}</div>
+                <span class="top-nav-menu-item-subtitle">Gender : </span>
+                <span class="top-nav-menu-item-title">{{gender | titlecase}}</span> <br />
+                <span class="top-nav-menu-item-subtitle">DoB : </span>
+                <span class="top-nav-menu-item-title">{{dob | date: 'dd-MMM-yyyy'}}</span> <br />
+                <span class="top-nav-menu-item-subtitle">Age : </span>
+                <span class="top-nav-menu-item-title">{{age}}</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="top-nav-menu-item-link logout-btn" (click)="logout()">Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

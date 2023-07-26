@@ -1,0 +1,304 @@
+@import "./colors";
+
+/*---------------------------  
+	Validation message css
+---------------------------*/
+.error-message {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: .875em;
+  color: #dc3545;
+}
+
+/*---------------------------  
+	Custom alignment center
+---------------------------*/
+.custom-text-center {
+  display: flex;
+  justify-content: center;
+}
+
+/*---------------------------  
+	cursor pointer
+---------------------------*/
+li a {
+  cursor: pointer;
+}
+
+/*----------------------------------------
+	material UI mat-table custom CSS start
+----------------------------------------*/
+
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-infix {
+  min-height: 45px;
+  padding: 0 !important;
+}
+
+.mat-elevation-z8 {
+  box-shadow: none;
+}
+
+.mat-mdc-table thead tr {
+  height: auto !important;
+}
+
+.mat-mdc-table thead tr th {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #141C24 !important;
+  background-color: #f5f5f5 !important;
+  border: none;
+  white-space: nowrap;
+  padding: 12px 20px !important;
+}
+
+.mat-mdc-table tbody tr {
+  height: auto !important;
+}
+
+.mat-mdc-table tbody tr td {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #333333;
+  border: none;
+  border-bottom: 1px solid #f4f4f4 !important;
+  background-color: transparent;
+  padding: 15px 20px;
+  white-space: nowrap;
+}
+
+.mat-mdc-table tbody tr td span {
+  background-color: #F6FAFF;
+  color: #889EBD;
+  display: inline-block;
+  padding: 5px 6px;
+  border-radius: 5px;
+  margin: 6px 20px;
+}
+
+.mat-mdc-table tbody tr td .mat-mdc-checkbox .mdc-checkbox {
+  padding: 0 !important;
+}
+
+.mat-mdc-table tbody tr td .mat-mdc-checkbox-touch-target {
+  display: none;
+}
+
+.mat-mdc-table tbody tr td .mat-mdc-checkbox .mdc-checkbox__ripple {
+  display: none;
+}
+
+.mat-mdc-table tbody tr td .mat-mdc-checkbox-ripple,
+.mdc-checkbox__ripple {
+  display: none;
+}
+
+.mat-mdc-table tbody tr td .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control {
+  width: 18px;
+  height: 18px;
+  top: 0;
+  right: 0;
+}
+
+.mat-mdc-table tbody tr td .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__background {
+  width: 18px;
+  height: 18px;
+  top: 0;
+  left: 0;
+  border: 1px solid #CBD5E1 !important;
+  background: transparent !important;
+}
+
+.mat-mdc-table tbody tr td .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark {
+  color: #889EBD;
+  width: 18px;
+  height: 18px;
+  padding: 2px 1px 5px 0px;
+}
+
+.mat-mdc-paginator-outer-container {
+  display: block;
+}
+
+.mat-mdc-paginator-outer-container .mat-mdc-paginator-container {
+  justify-content: space-between;
+  border-top: 1px solid rgba(0, 0, 0, 0.3) !important;
+  padding: 20px;
+}
+
+.mat-mdc-paginator-outer-container .mat-mdc-paginator-container .mat-mdc-paginator-page-size {
+  margin: 0 !important;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #333333;
+}
+
+.mat-mdc-paginator-outer-container .mat-mdc-paginator-container .mat-mdc-paginator-page-size .mat-mdc-paginator-page-size-label {
+  margin: 0;
+  margin-right: 10px;
+}
+
+.mat-mdc-paginator-outer-container .mat-mdc-paginator-container .mat-mdc-paginator-page-size .mat-mdc-paginator-page-size-select {
+  margin: 0;
+}
+
+.mat-mdc-paginator-outer-container .mat-mdc-paginator-container .mat-mdc-paginator-page-size .mat-mdc-paginator-page-size-select .mat-mdc-text-field-wrapper {
+  padding: 4px 13px;
+  height: 30px;
+  width: 60px;
+}
+
+.mat-mdc-paginator-outer-container .mat-mdc-paginator-container .mat-mdc-paginator-page-size .mat-mdc-paginator-page-size-select .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix {
+  padding: 3px 15px;
+  min-height: auto;
+}
+
+.mat-mdc-paginator-range-actions .mat-mdc-paginator-range-label {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #333333;
+}
+
+.mat-mdc-paginator-range-actions button {
+  padding: 0 !important;
+  border-radius: 5px;
+  width: 30px !important;
+  height: 30px !important;
+  margin: 0 5px;
+}
+
+.mat-mdc-paginator-range-actions button:hover {
+  background: #0052cc;
+}
+
+.mat-mdc-paginator-range-actions button:hover svg {
+  fill: #fff;
+}
+
+@media only screen and (max-width: 767px) {
+  .mat-elevation-z8 {
+    overflow: scroll;
+    background: #fff;
+  }
+}
+
+/*===== Material UI Mat-Table custom CSS end =====*/
+
+
+/*----------------------------------------
+	iframe CSS 
+----------------------------------------*/
+iframe {
+  margin-top: 0 !important;
+  padding: 0 !important;
+  border-radius: 0;
+  background: #ffffff;
+  border: 0px solid #0003;
+  box-shadow: none;
+}
+
+/*----------------------------------------
+	sub-menu-level-2 CSS 
+----------------------------------------*/
+#sub-menu-level-2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 15px 10px !important;
+  margin-top: 10px !important;
+  overflow-x: auto;
+}
+
+#sub-menu-level-2 li {
+  margin: 0 3px 5px !important;
+  padding: 0 !important;
+  display: block !important;
+  border: 0 !important;
+  flex: 0 0 auto;
+}
+
+#sub-menu-level-2 li a {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  background-color: var(--theme-left-side);
+  display: block;
+  width: 100%;
+  padding: 15px 10px;
+  border: 1px solid var(--theme-left-side);
+  border-radius: 5px 5px 0px 0px;
+  margin: 0 !important;
+  white-space: nowrap;
+  min-width: 100px;
+}
+
+#sub-menu-level-2 li a:hover {
+  background-color: var(--theme-nav-link);
+  border-color: var(--theme-nav-link);
+}
+
+#sub-menu-level-2 li a.active {
+  background-color: var(--theme-nav-link);
+  border-color: var(--theme-nav-link);
+}
+
+@media only screen and (max-width: 991px) {
+  #sub-menu-level-2 li {
+    margin: 1% !important;
+    width: 31.33%;
+  }
+
+  .mat-mdc-paginator-outer-container .mat-mdc-paginator-container {
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  #sub-menu-level-2 li {
+    margin: 1% !important;
+    width: 48%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #sub-menu-level-2 li {
+    margin: 1% 0 !important;
+    width: 100%;
+  }
+}
+
+// snackbar css
+.success-snackbar {
+  background-color: var(--theme-left-side);
+  color: white;
+}
+
+.error-snackbar {
+  background-color: red;
+  color: white;
+}
+
+.mat-mdc-snack-bar-container {
+  --mdc-snackbar-container-color: none;
+  --mat-mdc-snack-bar-button-color: none;
+}
+
+// mat-spinner
+.mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: var(--theme-nav-link);
+  text-align: center;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-mdc-slide-toggle .mdc-form-field {
+  color: $color-white;
+}
